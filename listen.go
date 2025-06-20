@@ -29,7 +29,7 @@ func listenClipboardWayland(outChan chan string) {
 	var prev []byte
 	okStderr := []byte("Clipboard content is not available as requested type \"text/plain\"")
 	for {
-		cmd := exec.Command("wl-paste", "-t", "text/plain")
+		cmd := exec.Command("wl-paste", "-t", "text/plain;charset=utf-8")
 		o, err := cmd.CombinedOutput()
 		if err != nil {
 			if bytes.Contains(o, okStderr) {
